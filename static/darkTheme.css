@@ -1,0 +1,115 @@
+#map_canvas { height: 100% }  
+
+
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+body {
+	background-color: #282828;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right:0px;
+	margin-bottom: 0px;
+}
+
+div.header{
+	width: 960px;
+	height: 80px;
+/*	background: #848282;*/ 
+	background:url(../images/hdr_bg.png);
+}
+
+
+div.leftbar {
+    margin-left: 0px:
+    margin-top: 0px:
+    height: 100%:
+    width: 40%:
+}
+
+div.explorer {
+	margin: 10px;
+	PADDING-RIGHT: 15px;
+  	PADDING-LEFT: 15px;
+  	PADDING-BOTTOM: 20px;
+  	PADDING-TOP:20px;
+  	BACKGROUND-COLOR: #ABABAB;
+}
+div.showInfo {
+	margin: 20px;
+	color:black;
+	size: 100;
+}
+div.mainPic{
+	border-bottom-style: solid;
+	border-width: 0px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-top-style: solid;
+}
+div.thumb{
+	margin:14px;
+
+}
+img.thumb{
+	border:solid;
+	margin-left: auto;
+    margin-right: auto;
+	display: block;
+}
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+a:link {
+	text-decoration: none;
+	color: #FFFF00;
+}
+a:visited {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:hover {
+	text-decoration: underline	;
+	color: #FFFF00;
+}
+a:active {
+	text-decoration: none;
+	color: #0000FF;
+}
+
+h1,h2,h3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+h1 {
+	font-size: 18px;
+}
+h2 {
+	font-size: 16px;
+}
+h3 {
+	font-size: 14px;
+	color:#282828;
+}
+h4 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color:black;	
+}
+h5 {font-family: sans-serif;
+	font-size: 14px;
+	color:red;
+}
+input.upload {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}

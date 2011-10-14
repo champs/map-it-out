@@ -1,0 +1,179 @@
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+  <style type="text/css" media="screen">
+  * {
+    font-family: Arial, sans-serif;
+    font-size: small;
+  }
+  .button {
+    font-family: Arial, sans-serif;
+    font-size: x-small;
+    vertical-align: top;
+  }
+  .buttonAsLink {
+    margin: 0px;
+    padding: 0px;
+    color:#00f;
+    background-color:transparent;
+    text-decoration:none;
+    border:0px;
+    cursor:pointer;
+    display: inline;
+    font-family: Arial, sans-serif;
+    font-size: small;
+  }
+  .borderBottom {
+    width: 200px;
+    border-bottom: 1px solid #999;
+  }
+  </style>
+</head>
+<body>
+
+  {{ greeting }}
+
+
+
+  <!--          -->
+  <!-- CONTROLS -->
+  <!--          -->
+  <form action="search" method="post" accept-charset="utf-8">
+    <input type="text" name="q" size="20" value="{{q}}" />
+    <input type="submit" value="Search" /><br/>
+  </form>
+
+  <form action="zoom" method="post" accept-charset="utf-8">
+    <input type="hidden" name="display_one" value="{{display_one}}" />
+
+    <!-- If we're zooming on multiple, just search -->
+    <input type="hidden" name="q" value="{{q}}" />
+
+    {% if display_one %}
+    <!-- If we're zooming on one, reuse lat/long/title/etc. -->
+    <input type="hidden" name="title" value="{{search_results.0.title}}" />
+    <input type="hidden" name="city" value="{{search_results.0.city}}" />
+    <input type="hidden" name="region" value="{{search_results.0.region}}" />
+    <input type="hidden" name="street_address" value="{{search_results.0.street_address}}">
+    <input type="hidden" name="lat" value="{{lat}}" />
+    <input type="hidden" name="lng" value="{{lng}}" />
+    <input type="hidden" name="url" value="{{search_results.0.url}}" />
+    <input type="hidden" name="phone" value="{{search_results.0.phone}}" />
+    {% endif %}
+    <input type="submit" name="zoomOut" value="-" />
+    <input type="submit" name="zoomIn" value="+" />
+    <input type="text" size="2" name="zoom_level" value="{{zoom_level}}" />
+    <input type="submit" name="zoomTo" value="zoom" />
+  </form>
+
+
+
+
+
+
+
+  <!--           -->
+  <!-- MAP IMAGE -->
+  <!--           -->
+  <img border=0 src="http://maps.google.com/staticmap?center={{lat}},{{lng}}&amp;zoom={{zoom_level}}&amp;size={{MAP_SIZE}}&amp;maptype=mobile&amp;{{markers}}&amp;key={{MAP_KEY}}" /><br/>
+
+
+
+  <!--                -->
+  <!-- SEARCH RESULTS -->
+  <!--                -->
+  <div class="borderBottom">Search Results</div>
+  {% for i in search_results %}
+  <table>
+    <tr>
+      <td><img src="{{i.letter}}" /></td>
+      <td>
+        <form style="display:inline" action="focus" method="post" accept-charset="utf-8">
+          <input type="hidden" name="lat" value="{{i.lat}}" />
+          <input type="hidden" name="lng" value="{{i.lng}}" />
+          <input type="hidden" name="title" value="{{i.title}}" />
+          <input type="hidden" name="city" value="{{i.city}}" />
+          <input type="hidden" name="region" value="{{i.region}}" />
+          <input type="hidden" name="street_address" value="{{i.street_address}}" />
+          <input type="hidden" name="zoom_level" value="{{zoom_level}}" />
+          <input type="hidden" name="url" value="{{i.url}}">
+          <input type="hidden" name="phone" value="{{i.phone}}">
+          <input class="buttonAsLink" type="submit" name="display_onePoint" value="{{i.title}}" />
+        </form>
+
+
+        {% ifnotequal i.street_address i.title %}
+        - {{i.street_address}}<br/>
+        {% if i.city %}
+        {{i.city}}, 
+        {% endif %}
+        {{i.region}}
+        {% endifnotequal %}
+        <form style="display: inline" action="save" method="post" accept-charset="utf-8">
+          <input type="hidden" name="lat" value="{{i.lat}}" />
+          <input type="hidden" name="lng" value="{{i.lng}}" />
+          <input type="hidden" name="title" value="{{i.title}}" />
+          <input type="hidden" name="city" value="{{i.city}}" />
+          <input type="hidden" name="region" value="{{i.region}}" />
+          <input type="hidden" name="street_address" value="{{i.street_address}}" />
+          <input type="hidden" name="zoom_level" value="{{zoom_level}}" />
+          <input type="hidden" name="url" value="{{i.url}}">
+          <input type="hidden" name="phone" value="{{i.phone}}">
+          <input class="button" type="submit" name="save" value="Save">
+        </form>
+        <br/>
+        {% if i.phone %}
+        {{ i.phone }} <a href="{{i.url}}">reviews</a>
+        {% endif %}
+      </td>
+    </tr>
+  </table>
+  {% endfor %}
+  <br/><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--              -->
+  <!-- SAVED POINTS -->
+  <!--              -->
+  <div class="borderBottom">Saved Points</div>
+  {% for i in savedPoints %}
+  <form style="display:inline" action="focus" method="post" accept-charset="utf-8">
+    <input type="hidden" name="lat" value="{{i.lat}}" />
+    <input type="hidden" name="lng" value="{{i.lng}}" />
+    <input type="hidden" name="title" value="{{i.title}}" />
+    <input type="hidden" name="city" value="{{i.city}}" />
+    <input type="hidden" name="region" value="{{i.region}}" />
+    <input type="hidden" name="street_address" value="{{i.street_address}}" />
+    <input type="hidden" name="zoom_level" value="{{i.zoom_level}}" />
+    <input type="hidden" name="url" value="{{i.url}}">
+    <input type="hidden" name="phone" value="{{i.phone}}">
+    <input class="buttonAsLink" type="submit" name="display_onePoint" value="{{i.title}}" />
+  </form> <span>- {{i.street_address}}</span>
+
+
+  <form style="display: inline" action="delete" method="post" accept-charset="utf-8">
+    <input type="hidden" name="key_name" value="{{i.key}}" />
+    <input class="button" type="submit" name="delete" value="delete">
+  </form>
+  <br/>
+  {% endfor %}
+  
+  <br/><br/>
+  <a href="http://code.google.com/p/google-ajax-examples/source/browse/trunk/nonjslocalsearch" style="font-size: x-small;" target="_blank">see the code</a>
+</body>

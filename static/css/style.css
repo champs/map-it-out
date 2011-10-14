@@ -1,0 +1,106 @@
+* { margin: 0; padding: 0; }
+
+body {
+	font-size: 15px;
+	color: #fff;
+	font-family: myriad-pro-1,myriad-pro-2,arial,sans-serif;
+	background: #111 ;
+}
+
+#header {
+    text-align: right:
+    
+    position: relative  ;
+    height: 50px;
+    background: black;
+    font-weight: 900;
+    font-family: Verdana, sans-serif;
+    font-size: 40px
+/*    border:1px solid red;*/
+
+}
+#header h1{
+    margin-right:5em;
+    text-align: Right;
+    color: #5aae00;
+}
+#leftBar {
+    top: 55px;
+    left: 20px;
+    position: absolute;
+    width: 30%;
+    height: 90%;
+/*    border:1px solid green;*/
+	font-size: 11px;
+}
+
+#container {
+    right: 20px;
+    top: 55px;
+    height: 85%;
+    width: 60%;
+    position: absolute;
+    border:10px solid   ;
+    
+}
+
+#map_canvas { height: 100% }  
+
+
+/* form 2 */
+
+	#form2{
+		color:#fff;
+		width:100%; /* customize width, this form have fluid layout */
+		}
+	#form2 h3{
+		margin:0;
+		background:#57a700 url(../images/form2/form_heading.gif) repeat-x;		
+		color:#fff;
+		font-size:14px;
+		border:1px solid #57a700;
+		border-bottom:none;
+		}		
+	#form2 h3 span{
+		display:block;
+		padding:10px 20px;
+		background:url(../images/form2/form_ico.gif) no-repeat 93% 50%;			
+		}				
+	#form2 fieldset{
+		margin:0;
+		padding:0;
+		border:none;	
+		border-top:2px solid #000;
+		background:#000 url(../images/form2/form_top.gif) repeat-x;		
+		padding-bottom:5px;
+		}		
+	#form2 legend{display:none;}	
+	#form2 p{margin:.5em 20px;}	
+	#form2 label{display:block;}
+    #form2 select{margin: 3px;}
+	#form2 input, #form2 textarea, #form2 select{		
+		width:98%;
+		border:1px solid #111;
+		background:#181818 url(../images/form2/form_input.gif) repeat-x;
+		padding:5px 3px;
+		color:#fff;
+		}		
+	#form2 textarea{
+		height:40px;
+		overflow:auto;
+		}					
+	#form2 p.submit{
+		text-align:right;
+		}	
+	#form2 button{
+		padding:0 20px;
+		height:20px;
+		line-height:10px;		
+		border:1px solid #70ad2e;
+		background:#5abe10 url(../images/form2/form_button.gif) repeat-x;
+		color:#fff;
+		cursor:pointer;		
+		text-align:center;		
+		}				
+
+/* // form 2 */

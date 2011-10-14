@@ -1,0 +1,21 @@
+body{
+    color: #444444;
+    
+}
+
+
+div#header{
+
+	width: 960px;
+	height: 80px;
+    background: ##888888;
+}
+
+div#leftBar{
+	height: 470px;
+	width: 290px;
+	float: left;
+	position: relative;
+	top: 40px;
+	background: #676767;
+}
