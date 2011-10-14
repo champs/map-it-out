@@ -1,51 +1,40 @@
 <!DOCTYPE html>
 <html>
   	<head>
-		<link rel="stylesheet" type="text/css" href="/static/css/reset.css" media="all" />
-		<link rel="stylesheet" type="text/css" href="/static/css/style.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="static/css/style.css" media="all" />
+    <script type="text/javascript" src="static/js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="static/js/main.js"></script>
         <script type="text/javascript"
             src="http://maps.googleapis.com/maps/api/js?sensor=true">
         </script>
-        <script type="text/javascript">
-            function initialize() {
-            var latlng = new google.maps.LatLng(13.83808,100.546875);
-            var myOptions = {
-              zoom: 6,
-              center: latlng,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map_canvas"),
-                myOptions);
-            }
-
-            function codeAddress() {
-        var address = query;
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map, 
-                position: results[0].geometry.location
-            });
-          } else {
-            alert("Geocode was not successful for the following reason: " + status);
-          }
-        });
-      }
-
-        </script>
+        	
 	</head>
 
-<body onload="initialize()">
+<body>
   	<div id="header">
         <h1>{{title}}</h1>
 	</div>
     <div id="leftBar">
-        <form id="form2" action="/{{title}}/"  method="post">
+    
+    <div class="greenForm">
+    <fieldset><legend>Contact form</legend>
+    <h3><span> Address Search </span></h3>
 
-					<h3><span>{{title}}  Report</span></h3>
+    <p><label>Address: </label><input id="address"  type="text"/><p/>
+<!--    <p><label>latitude: </label><input id="latitude" type="text"/></p>
+    <p><label>longitude: </label><input id="longitude" type="text"/></p>
+-->    
+	<br/><br/></fieldset></div>
+        
+        
+        <form class="greenForm" action="/{{title}}/"  method="post">
+
+					
 
 					<fieldset><legend>Contact form</legend>
+                    <h3><span>{{title}}  Report</span></h3>
 						<p class="first">
 							<label for="name">Contact info</label>
 							<input type="text" name="name" id="name" size="10" />
