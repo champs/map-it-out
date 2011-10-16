@@ -5,7 +5,7 @@ api_version: 1
 
 handlers:
  
-
+## add new path in order ##
 
 - url: /favicon.ico
   static_files: static/images/favicon.ico
@@ -17,8 +17,13 @@ handlers:
 
 - url: /hellomap
   static_dir: hellomap.html
-               
+
+
+- url: /robot.txt
+  static_files: robot.txt
+  upload: robot.txt        
+
+
 - url: .*
   script: main.py
-                     
 

@@ -8,7 +8,7 @@ var map;
 var marker;
 var currentZoom = 12;    
 
-
+// INIT the map on load
 function initialize(){
 //MAP
   var latlng = new google.maps.LatLng(13.83808,100.546875);
@@ -28,7 +28,8 @@ function initialize(){
     draggable: true
   });
 }
-		
+
+// Auto complete text box for address search
 $(document).ready(function() { 
   initialize();
   $(function() {
@@ -66,8 +67,8 @@ $(document).ready(function() {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[0]) {
           $('#address').val(results[0].formatted_address);
-          $('#latitude').val(marker.getPosition().lat());
-          $('#longitude').val(marker.getPosition().lng());
+          $('#lat').val(marker.getPosition().lat());
+          $('#lng').val(marker.getPosition().lng());
         }
       }
     });
@@ -76,6 +77,7 @@ $(document).ready(function() {
 });
       // A function to create the circle and set up the event window
 
+// Create Marker  
     var reportCircle;  
       function createMarker(point,name,html) {
         var marker = new google.maps.Marker(point);
@@ -147,7 +149,6 @@ $(document).ready(function() {
 
 
 // google analytics
-//
      var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-26347281-1']);
       _gaq.push(['_trackPageview']);
