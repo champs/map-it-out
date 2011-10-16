@@ -7,6 +7,8 @@ var geocoder;
 var map;
 var marker;
 var currentZoom = 12;    
+
+
 function initialize(){
 //MAP
   var latlng = new google.maps.LatLng(13.83808,100.546875);
@@ -116,4 +118,27 @@ $(document).ready(function() {
       // === Fetch the JSON data file ====    
       microAjax("json", process_it);
       // ================================================================
+
+
+
+
+
+// -- sharing stuff
+    (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })(); 
+
+
+// google analytics
+//
+     var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-26347281-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();                              
 

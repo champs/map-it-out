@@ -1,95 +1,96 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta http-equiv="content-type" content="MIME/html; charset=utf-8"/>
-    
-  	<link rel="stylesheet" type="text/css" href="/static/css/reset.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" media="all" />
-    <script type="text/javascript"
-            src="http://maps.googleapis.com/maps/api/js?sensor=true&key=ABQIAAAAqPVdfhOxxHaCGHzk_H6MeRSCDRugBVLjyi0GAX5qV9zkyFwj0hRd6NYaNSDAuJnMCLVy3dkJNcGwiA">
-    </script>         
-    <script type="text/javascript" src="/static/js/jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" src="/static/js/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript" src="/static/js/microajax.minifield.js"></script>
-    <script type="text/javascript" src="/static/js/main.js"></script>
-
-
-    <link rel="stylesheet" type="text/css" href="/static/css/ui.autocomplete.css" media="all" />
-     
-
-        <title> {{title}} </title>    	
+    	<meta http-equiv="content-type" content="MIME/html; charset=utf-8"/>
+    	<link rel="stylesheet" type="text/css" href="/static/css/ui.autocomplete.css" media="all" />    
+  		<link rel="stylesheet" type="text/css" href="/static/css/reset.css" media="all" />
+    	<link rel="stylesheet" type="text/css" href="/static/css/style.css" media="all" />
+    	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&key=ABQIAAAAqPVdfhOxxHaCGHzk_H6MeRSCDRugBVLjyi0GAX5qV9zkyFwj0hRd6NYaNSDAuJnMCLVy3dkJNcGwiA"></script>         
+        <script type="text/javascript" src="/static/js/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery-ui-1.8.16.custom.min.js"></script>
+        <script type="text/javascript" src="/static/js/microajax.minifield.js"></script>
+        <script type="text/javascript" src="/static/js/main.js"></script>
+        <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+        <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    	<title> {{title}} </title>    	
 	</head>
 
 <body>
+    <div id="wrapper">
 
-
-    <div id="header">
-        <h1>{{title}}</h1>
-	</div>
-    <div id="leftBar">
-   
-       <fieldset class="greenForm"  ><legend>Address Search</legend>
-                <h3><span> Address Search </span></h3>
-                <p><label>Address:  <font color="grey" style="font-size: 8px;" align="right"> (drag and drop on Google pin)</font>  </label>
+        <div id="header">
+            <h1>{{title}}</h1>
+        </div>
+        <div id="leftBar">
+            <fieldset class="greenForm">
+                <legend>Address Search</legend>
+                    <h3><span> Address Search </span></h3>
+                    <p><label>Address:  <font color="grey" style="font-size: 8px;" align="right"> (drag and drop on Google pin)</font>  </label>
                     <input id="address" name="address" /></p>
-             </fieldset>              
-             
-        <form action="/{{title}}/"  method="post">     
-               
-            <fieldset class="greenForm"><legend>Contact form</legend>
-                    <h3><span>{{title}}  Report</span></h3>
-						<p>
-							<label for="name">Contact info</label>
-							<input type="text" name="name" size="10" />
-                        </p>
-                         <p><label>Latitude: </label><input id="lat" name="lat" type="text"/>
-                             <label>Longitude: </label><input id="lng" name="lng" type="text"/
-                        ></p>
+            </fieldset>              
+                 
+            <form action="/{{title}}/"  method="post">        
+                <fieldset class="greenForm"><legend>Contact form</legend>
+                        <h3><span>{{title}}  Report</span></h3>
+                            <p>
+                                <label for="name">Contact info</label>
+                                <input type="text" name="name" size="10" />
+                            </p>
+                             <p><label>Latitude: </label><input id="lat" name="lat" type="text"/>
+                                 <label>Longitude: </label><input id="lng" name="lng" type="text"/
+                            ></p>
 
-                        <p>
-							<label for="water">Water Level</label>
-                                <select name="water" width="10px">
-                                <option value="0">dry</option>                                
-                                <option value="1">just wet</option>
-                                <option value="2">ankle</option>
-                                <option value="3">mid knee</option>
-                                <option value="4">knee</option>
-                                <option value="5">hip</option>
-                                <option value="6">chest</option>
-                                <option value="7">neck</option>
-                                <option value="8">head</option>
-                            </select>
-						</p>
-					   	<p>
-							<label for="road">Road accessible</label>
-                                <select name="road" width="10px">
-                                <option value="True">yes</option>                                
-                                <option value="False">no</option>
-                               
-                            </select>   
-						</p>													
-						<p>
-							<label for="text">Message</label>
-                            <textarea name="text" id="text" cols="30" rows="10" onfocus="this.value=''; this.onfocus=null;">comment here!</textarea>
+                            <p>
+                                <label for="water">Water Level</label>
+                                    <select name="water" width="10px">
+                                    <option value="0">dry</option>                                
+                                    <option value="1">just wet</option>
+                                    <option value="2">ankle</option>
+                                    <option value="3">mid knee</option>
+                                    <option value="4">knee</option>
+                                    <option value="5">hip</option>
+                                    <option value="6">chest</option>
+                                    <option value="7">neck</option>
+                                    <option value="8">head</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="road">Road accessible</label>
+                                    <select name="road" width="10px">
+                                    <option value="True">yes</option>                                
+                                    <option value="False">no</option>
+                                   
+                                </select>   
+                            </p>													
+                            <p>
+                                <label for="text">Message</label>
+                                <textarea name="text" id="text" cols="30" rows="10" onfocus="this.value=''; this.onfocus=null;">comment here!</textarea>
 
-                            
-						</p>					             	
+                                
+                            </p>					             	
 
-						<p class="submit"><button type="submit">Send</button></p>
+                            <p class="submit"><button type="submit">Send</button></p>
+                        </fieldset>					
+            </form>	
+        </div>
+        <div id="container" >
+            <div id="map_canvas" style=" width:100%; height:100%"></div>    
+            
+        </div>   
 
-					</fieldset>					
-
-	    </form>	
-    </div>
-    <div id="container" >
-		<div id="map_canvas" style=" width:100%; height:100%"></div>    
-	    
-    </div>   
-    <div id="contact">
-        contact me twitter: @champ149
-        <br/>mail : beyourwish@gmail.com   
-    </div>
-
+    </div> <!-- end wrapper -->
+    
+        <div id="contact">
+            contact me 
+            <br/>twitter: @champ149
+            <br/>mail : beyourwish@gmail.com   
+        </div>
+        <div id="sharing">
+            <br/><a name="fb_share"></a>
+            <br/><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="champ149">Tweet</a>
+            <br/><g:plusone size="standard" anotation="inline"></g:plusone>
+        </div>
+ 
   </body>
 </html>
 

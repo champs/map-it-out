@@ -11,53 +11,58 @@ body {
     font-size: 10px;
     color: #57a700;
     position: relative  ;
-    height: 50px;
+    height: 80px;
     background: black;
-
-/*    border:1px solid red;*/
-
+    vertical-align: middle;
 }
 #header h1{
     margin-right:20px;
-    padding-top: 6px;
+    padding-top: 16px;
     text-align: Right;
     color: #5aae00;
     font-weight: 300;
     font-family: Verdana, sans-serif;
-    font-size: 20px  
+    font-size: 35px  
     
 }
+#warper {
+    position: relative;
+    height: 100%;
+    
+}
+
 #leftBar {
-    top: 55px;
+    top: 85px;
     left: 20px;
     position: absolute;
     height: 80%;
     width: 24%;
 /*    border:1px solid green;*/
-	font-size: 11px;
-    background: black;
-    
+	font-size: 17px;
+    background: black;   
 }
-
 #container {
-    top: 55px;
+    top: 85px;
     right: 20px;
-    position: absolute  ;
+    position: absolute;
     height: 80%;
     width: 70%;
-    
 }
-
+#map_canvas { height: 100% }  
 #contact {
     position: absolute;
     left: 10px;
     bottom: 5px;
-    font-size: 10px; 
-
+    font-size: 14px;
 }
+#sharing{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 14px;    
+    line-height: 30px; 
 
-#map_canvas { height: 100% }  
-
+}  
 
 /* form 2 */
 
@@ -69,7 +74,7 @@ body {
 		margin:0;
 	   
 		color:#fff;
-		font-size:9px;
+		font-size:18px;
 		border:1px solid #57a700;
 		border-bottom:none;
 		}		
@@ -93,6 +98,7 @@ body {
         display:block; 
         margin-top:4px;
         margin-bottom:4px;
+        font-size: 14px;
     }
     .greenForm select{margin: 3px;}
 	.greenForm input, .greenForm textarea, .greenForm select{		
@@ -155,3 +161,4 @@ body {
       font-weight: normal !important;  // rather not bold the hover item (changes the width)
     }
     
+
