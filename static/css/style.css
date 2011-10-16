@@ -1,47 +1,59 @@
 * { margin: 0; padding: 0; }
 
 body {
-	font-size: 15px;
+	font-size: 13px;
 	color: #fff;
 	font-family: myriad-pro-1,myriad-pro-2,arial,sans-serif;
-	background: #111 ;
+	background: #282828;
 }
 
 #header {
-    text-align: right:
-    
+    font-size: 10px;
+    color: #57a700;
     position: relative  ;
     height: 50px;
     background: black;
-    font-weight: 900;
-    font-family: Verdana, sans-serif;
-    font-size: 40px
+
 /*    border:1px solid red;*/
 
 }
 #header h1{
-    margin-right:5em;
+    margin-right:20px;
+    padding-top: 6px;
     text-align: Right;
     color: #5aae00;
+    font-weight: 300;
+    font-family: Verdana, sans-serif;
+    font-size: 20px  
+    
 }
 #leftBar {
     top: 55px;
     left: 20px;
     position: absolute;
-    width: 30%;
-    height: 90%;
+    height: 80%;
+    width: 24%;
 /*    border:1px solid green;*/
 	font-size: 11px;
+    background: black;
+    
 }
 
 #container {
-    right: 20px;
     top: 55px;
-    height: 85%;
-    width: 60%;
-    position: absolute;
-    border:10px solid   ;
+    right: 20px;
+    position: absolute  ;
+    height: 80%;
+    width: 70%;
     
+}
+
+#contact {
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+    font-size: 10px; 
+
 }
 
 #map_canvas { height: 100% }  
@@ -55,40 +67,44 @@ body {
 		}
 	.greenForm h3{
 		margin:0;
-		background:#57a700 url(../images/greenForm/form_heading.gif) repeat-x;		
+	   
 		color:#fff;
-		font-size:14px;
+		font-size:9px;
 		border:1px solid #57a700;
 		border-bottom:none;
 		}		
 	.greenForm h3 span{
 		display:block;
 		padding:10px 20px;
-		background:url(../images/greenForm/form_ico.gif) no-repeat 93% 50%;			
+		background:#5abe10 ;
+		   	
 		}				
 	.greenForm fieldset{
 		margin:0;
 		padding:0;
 		border:none;	
 		border-top:2px solid #000;
-		background:#000 url(../images/greenForm/form_top.gif) repeat-x;		
+		background:#000;		
 		padding-bottom:5px;
 		}		
 	.greenForm legend{display:none;}	
 	.greenForm p{margin:.5em 20px;}	
-	.greenForm label{display:block;}
+	.greenForm label{
+        display:block; 
+        margin-top:4px;
+        margin-bottom:4px;
+    }
     .greenForm select{margin: 3px;}
 	.greenForm input, .greenForm textarea, .greenForm select{		
 		width:98%;
 		border:1px solid #111;
-		background:#181818 url(../images/greenForm/form_input.gif) repeat-x;
-		padding:5px 3px;
+		background:#333;
 		color:#fff;
 		size: 10px;
 		}		
 	.greenForm textarea{
 		height:40px;
-		overflow:auto;
+        text-align: left;
 		}					
 	.greenForm p.submit{
 		text-align:right;
@@ -98,10 +114,44 @@ body {
 		height:20px;
 		line-height:10px;		
 		border:1px solid #70ad2e;
-		background:#5abe10 url(../images/greenForm/form_button.gif) repeat-x;
+		background:#5abe10 ;
 		color:#fff;
 		cursor:pointer;		
 		text-align:center;		
-		}				
+		}	
 
-/* // form 2 */
+    .greenForm button:hover{
+  
+		border:1px solid 5abe10;
+		background:#282828 ;
+		} 
+    .greenForm button:focus{
+  
+		border:1px solid 5abe10;
+		background:#282828 ;
+		} 
+
+    textarea,select,input:focus
+    { 
+        border: 2px solid #57a700;
+    }
+        
+    .ui-autocomplete {
+    left:40px;
+    top: 40px;
+    background-color: #282828;
+    color: #828282;
+    width: 500px;
+    list-style-type: none;
+    padding-left: 1px;
+    font-size: 9px;
+    
+    }
+    .ui-autocomplete li.ui-menu-item {
+      padding: 1px;  // needed to prevent the item sizes from changing on hover
+    }
+
+    .ui-autocomplete a.ui-state-hover {
+      font-weight: normal !important;  // rather not bold the hover item (changes the width)
+    }
+    

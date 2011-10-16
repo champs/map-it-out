@@ -6,12 +6,12 @@
 var geocoder;
 var map;
 var marker;
-    
+var currentZoom = 12;    
 function initialize(){
 //MAP
   var latlng = new google.maps.LatLng(13.83808,100.546875);
   var options = {
-    zoom: 8,
+    zoom: currentZoom,
     center: latlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -25,13 +25,10 @@ function initialize(){
     map: map,
     draggable: true
   });
-				
 }
 		
 $(document).ready(function() { 
-         
   initialize();
-				  
   $(function() {
     $("#address").autocomplete({
       //This bit uses the geocoder to fetch address values
@@ -39,7 +36,7 @@ $(document).ready(function() {
         geocoder.geocode( {'address': request.term + ', TH'  }, function(results, status) {
           response($.map(results, function(item) {
             return {
-              label:  item.formatted_address,
+              label: item.formatted_address,
               value: item.formatted_address,
               latitude: item.geometry.location.lat(),
               longitude: item.geometry.location.lng()
@@ -50,11 +47,13 @@ $(document).ready(function() {
       },
       //This bit is executed upon selection of an address
       select: function(event, ui) {
-        $("#latitude").val(ui.item.latitude);
-        $("#longitude").val(ui.item.longitude);
+        $("#lat").val(ui.item.latitude);
+        $("#lng").val(ui.item.longitude);
         var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
         marker.setPosition(location);
         map.setCenter(location);
+        currentZoom = 16;
+        map.setZoom(16);
       }
     });
   });
@@ -73,3 +72,48 @@ $(document).ready(function() {
   });
   
 });
+      // A function to create the circle and set up the event window
+
+    var reportCircle;  
+      function createMarker(point,name,html) {
+        var marker = new google.maps.Marker(point);
+        GEvent.addListener(marker, "click", function() {
+          marker.openInfoWindowHtml(html);
+        });
+        // save the info we need to use later for the side_bar
+        gmarkers[i] = marker;
+        htmls[i] = html;
+        // add a line to the side_bar html
+        side_bar_html += '<a href="javascript:myclick(' + i + ')">' + name + '<\/a><br>';
+        i++;
+        return marker;
+      }
+        // A function to parse json and call createMarker
+      process_it = function(doc) {
+        // === Parse the JSON document === 
+        var jsonData = eval('(' + doc + ')');
+        
+        // === Plot the markers ===
+        for (var i=0; i<jsonData.length; i++) {
+            var center = new google.maps.LatLng(jsonData[i].lat, jsonData[i].lng);
+            var circleOptions = {
+             strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            map: map,
+            center: center,
+            radius: 800
+            };
+        reportCircle = new google.maps.Circle(circleOptions);
+         
+        }
+      }          
+
+      
+      // ================================================================
+      // === Fetch the JSON data file ====    
+      microAjax("json", process_it);
+      // ================================================================
+

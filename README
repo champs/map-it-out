@@ -1,0 +1,15 @@
+map-it-out.appspot.com 
+v0.1 - beta release
+[feature]
+- Google map search
+- google app engine server
+- Report's form include, road accessibility, water level 
+- json endpoint
+
+
+
+[ future release ] 
+- circle colour base on water level
+- road accessibility report 
+- circle radius change on zoom
+...

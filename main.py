@@ -19,23 +19,34 @@ from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
 from model import Report
 import os
-import urllib 
+import urllib
+from datetime import date, datetime, time, timedelta
+from google.appengine.ext.db import djangoforms
+import simplejson
+import pprint
 
+title = 'WaterReport'
 
-title = 'ThaiFlood2011'
+days = 3
+
+def get_startDay():
+    deltaDays = timedelta(days)
+    endDate = datetime.now()
+    startDate = endDate - deltaDays          
+    return startDate
 
 class ThaiFloodReport(webapp.RequestHandler):
     def get(self):
-
         error = urllib.unquote(self.request.get('error'))
-        #reports = Report().all().filter('title', title).latest()
+        startDate = get_startDay()
         reports = Report().all().filter('title', title)
         reports.order('-date')
-        
+        reports.filter('date >' ,startDate)
         template_values = {
                 'title' : title,
 				'e_msg':error,
-                'reports': reports,
+                'reports': simplejson.dumps([r.to_dict() for r in reports]),
+                'startDate':startDate
         }
         path = os.path.join(os.path.dirname(__file__), 'index.html')
         self.response.out.write(template.render(path, template_values))
@@ -44,36 +55,64 @@ class ThaiFloodReport(webapp.RequestHandler):
     def post(self): 
         request = self.request
         report = Report()
+       #try:
+        name = urllib.unquote(self.request.get('name')) 
+        water = urllib.unquote(self.request.get('water')) 
+        road = urllib.unquote(self.request.get('road')) 
+        text = urllib.unquote(self.request.get('text')) 
+        lat = urllib.unquote(self.request.get('lat')) 
+        lng = urllib.unquote(self.request.get('lng')) 
         
-        try:
-            name = urllib.unquote(self.request.get('name')) 
-            water = urllib.unquote(self.request.get('water')) 
-            urgent = urllib.unquote(self.request.get('urgent')) 
-            text = urllib.unquote(self.request.get('text')) 
-            
-            report.title = title
-            report.name = name
-            report.water = float(water)
-            report.urgent = urgent
-            report.text = text
-            report.lat = 0.0
-            report.lng = 0.0
-            report.put()
+        report.title = title
+        report.name = name
+        report.lat = float(lat)
+        report.lng = float(lng)
+        report.water = int(water)
+        report.text = text
+        report.road = bool(road)
+        report.put()
 
-        except Exception, e:
-            self.redirect('/ThaiFlood2011/?error=Error, %s'%e)
-        self.redirect('/ThaiFlood2011/')
+#        except Exception, e:
+            #self.redirect('/ThaiFlood2011/?error=Error, %s'%e)
+        error = urllib.unquote(self.request.get('error'))
+        startDate = get_startDay()
+        
+        reports = Report().all().filter('title', title)
+        reports.order('-date')
+        reports.filter('date >' ,startDate)
+            
+        template_values = {
+                'title' : title,
+				'e_msg':error,
+                'reports': simplejson.dumps([r.to_dict() for r in reports]),
+                'startDate':startDate
+
+        }
+        path = os.path.join(os.path.dirname(__file__), 'index.html')
+        self.response.out.write(template.render(path, template_values)) 
+
+class jsonHandler(webapp.RequestHandler):
+    def get(self,title):
+        startDate = get_startDay()
+        reports = Report().all()
+        reports.filter('title', title)
+        reports.order('-date')
+        reports.filter('date >' ,startDate)
+        json = simplejson.dumps([r.to_dict() for r in reports]) 
+        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+        self.response.out.write(json)
+ 
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
-        self.redirect('/ThaiFlood2011/')
+        self.redirect('/WaterReport/')
 
 
 
 def main():
-    application = webapp.WSGIApplication([('/ThaiFlood2011/', ThaiFloodReport),
-                                        ('/', MainHandler)
-                                        
+    application = webapp.WSGIApplication([('/WaterReport/', ThaiFloodReport),
+                                        ('/', MainHandler),
+                                        (r'/(.*)/json', jsonHandler)
                                         ],
                                          debug=True)
     util.run_wsgi_app(application)
