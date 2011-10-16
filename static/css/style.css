@@ -15,16 +15,23 @@ body {
     background: black;
     vertical-align: middle;
 }
-#header h1{
+#header h1,h3{
     margin-right:20px;
     padding-top: 16px;
     text-align: Right;
     color: #5aae00;
     font-weight: 300;
     font-family: Verdana, sans-serif;
-    font-size: 35px  
+    line-height: 13px; 
     
 }
+#header h1{
+    font-size: 35px;  
+}
+#header h3{
+    color: gray;
+    font-size: 28px;  
+}    
 #warper {
     position: relative;
     height: 100%;

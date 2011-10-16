@@ -6,10 +6,19 @@ v0.1 - beta release
 - Report's form include, road accessibility, water level 
 - json endpoint
 
+v0.2 - beta
+change text
+add social feature , sharing for fb, google, twitter
 
 
-[ future release ] 
+
+[ future ] 
 - circle colour base on water level
 - road accessibility report 
 - circle radius change on zoom
 ...
+
+
+[ known bugs]
+layout for iPhone landscape is off
+

@@ -89,7 +89,22 @@ $(document).ready(function() {
         side_bar_html += '<a href="javascript:myclick(' + i + ')">' + name + '<\/a><br>';
         i++;
         return marker;
-      }
+    }
+
+    function colorPicker(water){
+        colorOptions = {
+        0:"#00FF00",               
+        1:"#33FF00",
+        2:"#77FF00", 
+        3:"#AAFF00", 
+        4:"#FFFF00", 
+        5:"#FFAA00", 
+        6:"#FF7700", 
+        7:"#FF3300", 
+        8:"#FF0000", 
+        }
+        return colorOptions[water];
+    }
         // A function to parse json and call createMarker
       process_it = function(doc) {
         // === Parse the JSON document === 
@@ -99,14 +114,14 @@ $(document).ready(function() {
         for (var i=0; i<jsonData.length; i++) {
             var center = new google.maps.LatLng(jsonData[i].lat, jsonData[i].lng);
             var circleOptions = {
-             strokeColor: "#FF0000",
-            strokeOpacity: 0.8,
-            strokeWeight: 1,
-            fillColor: "#FF0000",
-            fillOpacity: 0.35,
-            map: map,
-            center: center,
-            radius: 800
+                strokeColor: colorPicker(jsonData[i].water),
+                strokeOpacity: 0.8,
+                strokeWeight: 1,
+                fillColor: colorPicker(jsonData[i].water),
+                fillOpacity: 0.35,
+                map: map,
+                center: center,
+                radius: 800
             };
         reportCircle = new google.maps.Circle(circleOptions);
          
