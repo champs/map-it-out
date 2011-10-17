@@ -12,7 +12,8 @@
         <script type="text/javascript" src="/static/js/main.js"></script>
         <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
         <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-    	<title> {{title}} </title>    	
+        <script src="http://connect.facebook.net/en_US/all.js"></script>
+        <title> {{title}} </title>    	
 	</head>
 
 <body>
@@ -40,7 +41,6 @@
                              <p><label>Latitude: </label><input id="lat" name="lat" type="text"/>
                                  <label>Longitude: </label><input id="lng" name="lng" type="text"/
                             ></p>
-
                             <p>
                                 <label for="water">ระดับน้ำ</label>
                                     <select name="water" width="10px">
@@ -70,7 +70,9 @@
                                 
                             </p>					             	
 
-                            <p class="submit"><button type="submit">Send</button></p>
+                            <p class="submit"><button type="submit">
+                                <a href="https://www.facebook.com/dialog/feed?app_id=111168802326801&link=http://map-it-out.appspot.com&picture=http://www.highlandwater.com/Dianesadds/water_drop_widget_blue.jpg&name=Crowd%20Sourcing%20Water%20Report&caption=http://map-it-out.appspot.com&description=Crowd%20sourcing%20water%20report&message=I%20just%20post%20report%20on%20http://map-it-out.appspot.com&redirect_uri=http://map-it-out.appspot.com&display=popup">Send</a>
+                            </button></p>
                         </fieldset>					
             </form>	
         </div>
