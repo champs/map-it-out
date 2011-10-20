@@ -1,5 +1,17 @@
 map-it-out.appspot.com 
 
+
+v0.3 - beta
+add data from http://fms2.drr.go.th/feed || Thai gov site, feed report 
+right now it is static file feed.xml but I will create cron job that download new feed every hour or so
+
+update color circle to have dark blue border , and fill with color base on water level
+green  - 0-15 cm
+ . 
+ .
+red  = + 120cm.
+
+
 v0.2 - beta
 change text
 add social feature , sharing for fb, google, twitter

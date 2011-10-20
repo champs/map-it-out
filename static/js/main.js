@@ -116,11 +116,11 @@ $(document).ready(function() {
         for (var i=0; i<jsonData.length; i++) {
             var center = new google.maps.LatLng(jsonData[i].lat, jsonData[i].lng);
             var circleOptions = {
-                strokeColor: colorPicker(jsonData[i].water),
+                strokeColor: 'blue',
                 strokeOpacity: 0.8,
-                strokeWeight: 1,
+                strokeWeight: 3,
                 fillColor: colorPicker(jsonData[i].water),
-                fillOpacity: 0.35,
+                fillOpacity: 0.4,
                 map: map,
                 center: center,
                 radius: 800
