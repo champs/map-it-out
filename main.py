@@ -103,16 +103,20 @@ class jsonHandler(webapp.RequestHandler):
         self.response.out.write(json)
  
 
+class updateBasicInfo(webapp.RequestHandler):
+    def get(self):
+        pass
+
+
 class MainHandler(webapp.RequestHandler):
     def get(self):
         self.redirect('/WaterReport/')
 
-
-
 def main():
     application = webapp.WSGIApplication([('/WaterReport/', ThaiFloodReport),
                                         ('/', MainHandler),
-                                        (r'/(.*)/json', jsonHandler)
+                                        (r'/(.*)/json', jsonHandler),
+                                        ('/updateBasicInfo/' updateBasicInfo),
                                         ],
                                          debug=True)
     util.run_wsgi_app(application)
