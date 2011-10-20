@@ -1,7 +1,6 @@
 import urllib
 from xml.dom import minidom
 import simplejson as json
-import lxml
 
 def getText(nodelist):
     rc = []
@@ -41,18 +40,27 @@ class Item():
 
     def water(self):
         try:
+            ## feed return level in cm unit // i have to change it to [0-8]
             text_array = self.title.split(' ')         
-            return int(text_array[4])
+            level = float(text_array[4])
+            my_level = level/15
+            if my_level > 8:
+                return 8
+            return int(my_level)
+
+
         except:
             return 0
-    def __repr__(self):
-        return json.dumps({ 'lat': self.lat,
+    def to_dict(self):
+        return { 'lat': self.lat,
                 'lng': self.lng,
-                'text': self.text(),
-                'road': self.road(),
-                #'water': self.water()
-                })
+                #'text': self.text(),
+                #'road': self.road(),
+                'water': self.water()
+                }
 
+    def __repr__(self):
+        return json.dumps(self.to_dict)
     
 class FeedFMSParser():
     def __init__(self):
@@ -61,18 +69,14 @@ class FeedFMSParser():
         document = open('feed.xml').read()
         self.dom = minidom.parseString(document)
     
-    def print_item(self):
-        f = self.dom.getElementsByTagName('item')[0]
-        item = Item(f)
-        print item
-        
-    
     def list_items(self):
+        items = []
         for i in self.dom.getElementsByTagName('item'):
             item = Item(i)
-            print item
+            if item.water == 0 or item.lat == "" or item.lng == "":
+                pass
+            else:
+                items.append(item.to_dict())
 
+        return items
 
-#feed = FeedFMSParser()
-
-#feed.list_items()

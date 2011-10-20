@@ -24,6 +24,9 @@ from datetime import date, datetime, time, timedelta
 from google.appengine.ext.db import djangoforms
 import simplejson
 import pprint
+from feedparser import FeedFMSParser
+
+
 
 title = 'WaterReport'
 
@@ -98,14 +101,19 @@ class jsonHandler(webapp.RequestHandler):
         reports.filter('title', title)
         reports.order('-date')
         reports.filter('date >' ,startDate)
-        json = simplejson.dumps([r.to_dict() for r in reports]) 
+        
+        feed = FeedFMSParser()
+        final_report = feed.list_items()
+        
+        final_report += [r.to_dict() for r in reports]
+        
+        json = simplejson.dumps(final_report) 
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.out.write(json)
+
  
 
-class updateBasicInfo(webapp.RequestHandler):
-    def get(self):
-        pass
+
 
 
 class MainHandler(webapp.RequestHandler):
@@ -116,7 +124,6 @@ def main():
     application = webapp.WSGIApplication([('/WaterReport/', ThaiFloodReport),
                                         ('/', MainHandler),
                                         (r'/(.*)/json', jsonHandler),
-                                        ('/updateBasicInfo/' updateBasicInfo),
                                         ],
                                          debug=True)
     util.run_wsgi_app(application)
