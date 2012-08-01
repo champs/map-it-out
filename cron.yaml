@@ -1,0 +1,5 @@
+cron:
+- description: reload feed every hour
+  url: /tasks/reload_feed
+  schedule: every 1 hours
+
